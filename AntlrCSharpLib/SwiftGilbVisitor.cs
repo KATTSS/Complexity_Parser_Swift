@@ -12,7 +12,9 @@ namespace AntlrCSharpLib
         public int CLI { get; private set; } = 0;
         private int _currentDepth = 0;
 
-        public double cl => TotalOperators == 0 ? 0 : (double)CL / TotalOperators;
+        public double Cl => TotalOperators == 0 ? 0 : (double)CL / TotalOperators;
+
+ 
 
         // Метод для централизованного обновления CLI
         private void UpdateCLI()
@@ -171,7 +173,7 @@ namespace AntlrCSharpLib
         {
             Console.WriteLine("--- Метрика Джилба ---");
             Console.WriteLine($"CL (Абсолютная сложность) = {CL}");
-            Console.WriteLine($"cl (Относительная сложность) = {cl:F4}");
+            Console.WriteLine($"cl (Относительная сложность) = {Cl:F4}");
             Console.WriteLine($"CLI (Макс. вложенность) = {CLI}");
             Console.WriteLine($"Общее количество операторов = {TotalOperators}");
         }

@@ -1,4 +1,4 @@
-using Antlr4.Runtime;
+п»їusing Antlr4.Runtime;
 using Antlr4.Runtime.Tree;
 using AntlrCSharpLib;
 using System;
@@ -33,7 +33,7 @@ namespace GilbGui
 
         public MainForm()
         {
-            Text = "Метрология - Метрика Джилба (Swift)";
+            Text = "Metrology - Gilb metrics (Swift)";
             Width = 1200;
             Height = 780;
             MinimumSize = new Size(1000, 680);
@@ -68,7 +68,7 @@ namespace GilbGui
             var panelLeft = new Panel { Dock = DockStyle.Fill, Padding = new Padding(15) };
             var codeCard = CreateCardPanel();
             codeCard.Dock = DockStyle.Fill;
-            var lblCodeHeader = CreateHeaderLabel("Исходный код программы (Swift)");
+            var lblCodeHeader = CreateHeaderLabel("Source code (Swift)");
 
             txtCode = new TextBox
             {
@@ -79,7 +79,7 @@ namespace GilbGui
                 BorderStyle = BorderStyle.None,
                 BackColor = _cardBackColor,
                 ForeColor = _textColorDark,
-                Text = "func checkNestedConditions(y: Int, x: Int) -> String {\n    if y > 50 {\n        if x < 100 {\n            return \"Успех\"\n        }\n    }\n    return \"Провал\"\n}"
+                Text = "func checkNestedConditions(y: Int, x: Int) -> String {\n    if y > 50 {\n        if x < 100 {\n            return \"пїЅпїЅпїЅпїЅпїЅ\"\n        }\n    }\n    return \"пїЅпїЅпїЅпїЅпїЅпїЅ\"\n}"
             };
 
             var txtWrapper = new Panel { Dock = DockStyle.Fill, Padding = new Padding(10), BackColor = _cardBackColor };
@@ -91,7 +91,7 @@ namespace GilbGui
 
             btnCalculate = new Button
             {
-                Text = "РАССЧИТАТЬ МЕТРИКУ ДЖИЛБА",
+                Text = "Calculate Metrics",
                 Dock = DockStyle.Bottom,
                 Height = 50,
                 FlatStyle = FlatStyle.Flat,
@@ -116,7 +116,7 @@ namespace GilbGui
             var metricsCard = CreateCardPanel();
             metricsCard.Dock = DockStyle.Fill;
 
-            var lblMetricsHeader = CreateHeaderLabel("Результаты анализа Джилба");
+            var lblMetricsHeader = CreateHeaderLabel("Results - Gilb Metrics");
             metricsCard.Controls.Add(lblMetricsHeader);
 
             var flowLayoutPanel = new FlowLayoutPanel
@@ -128,10 +128,10 @@ namespace GilbGui
                 BackColor = _cardBackColor
             };
 
-            lblAbsoluteComplexity = CreateMetricDisplay("Абсолютная сложность (CL):", "-", flowLayoutPanel);
-            lblRelativeComplexity = CreateMetricDisplay("Относительная сложность (cl):", "-", flowLayoutPanel);
-            lblMaxNesting = CreateMetricDisplay("Максимальная вложенность (CLI):", "-", flowLayoutPanel);
-            lblTotalOperators = CreateMetricDisplay("Общее число операторов:", "-", flowLayoutPanel);
+            lblAbsoluteComplexity = CreateMetricDisplay("Absolute Complexity (CL):", "-", flowLayoutPanel);
+            lblRelativeComplexity = CreateMetricDisplay("Relative Complexity (cl):", "-", flowLayoutPanel);
+            lblMaxNesting = CreateMetricDisplay("Max Nesting (CLI):", "-", flowLayoutPanel);
+            lblTotalOperators = CreateMetricDisplay("Total Operators:", "-", flowLayoutPanel);
 
             metricsCard.Controls.Add(flowLayoutPanel);
             flowLayoutPanel.BringToFront();
@@ -215,7 +215,7 @@ namespace GilbGui
 
                 if (string.IsNullOrWhiteSpace(code))
                 {
-                    MessageBox.Show("Введите код для анализа.", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ.", "пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
 
@@ -235,7 +235,6 @@ namespace GilbGui
 
                 lblTotalOperators.Text = visitor.TotalOperators.ToString();
 
-                // Подсветка результатов цветом при успешном расчете
                 lblAbsoluteComplexity.ForeColor = _accentColor;
                 lblRelativeComplexity.ForeColor = _accentColor;
                 lblMaxNesting.ForeColor = _accentColor;
@@ -243,7 +242,7 @@ namespace GilbGui
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Ошибка анализа: {ex.Message}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ: {ex.Message}", "пїЅпїЅпїЅпїЅпїЅпїЅ", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
