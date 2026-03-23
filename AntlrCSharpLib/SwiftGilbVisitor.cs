@@ -15,6 +15,7 @@ namespace AntlrCSharpLib
         public int CL => _cl;
         public double Cl => _totalOperators > 0 ? (double)_cl / _totalOperators : 0;
         public int CLI => _maxNesting;
+        public int TotalOperators => _totalOperators;
 
         private void UpdateNesting(int additionalNesting = 1)
         {   PrintMetrics("UpdateNesting");
