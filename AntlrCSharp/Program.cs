@@ -6,25 +6,9 @@ class Program
 {
     static void Main() 
     {
-        string code = @"
-            let x = 10 + 20
-            let y = x * 5
-            if y > 50 {
-                if x < 100 {
-                    print(""nested"")
-                }
-            } else {
-                print(""small"")
-            }
-
-            switch y {
-                case 1: print(""1"")
-                case 2: print(""2"")
-                case 3: print(""3"")
-                default: print(""other"")
-            }
-        ";
-
+        // string code ="func checkNestedConditions(y: Int, x: Int) -> String {    if y > 50 {        if x < 100 {            return 5        } else {            return 4        }    } else {        return 1     }}";
+        // string code = "func processValue(_ value: Int) -> String {    switch value {    case 0:        return 5    case 1...10:        if value % 2 == 0 {            return 4        } else {            return 3        }    case 11...100:        if value < 50 {            return 2        } else {            return 1       }    default:       return 0    }}";   
+         string code = "switch x {case 1: y=1 case 2: y=2 case 3:y=4 case 4: y=4 default: y=5}";
         try 
         {
             var input = new AntlrInputStream(code);
@@ -33,13 +17,8 @@ class Program
             var parser = new Swift5Parser(tokens);
             var tree = parser.top_level(); 
 
-            // Метрика Маккейба (уже была)
-            var mccabeVisitor = new SwiftMcCabeVisitor();
-            mccabeVisitor.Visit(tree); 
-            Console.WriteLine($"Mc Cabe complexity: {mccabeVisitor.GetComplexity()}");
-
-            // Метрика Джилба (новая)
             var gilbVisitor = new SwiftGilbVisitor();
+            
             gilbVisitor.Visit(tree);
             gilbVisitor.DisplayMetrics();
         }
